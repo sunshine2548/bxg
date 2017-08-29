@@ -31,7 +31,7 @@ define(["jquery", "template", "tool"], function ($, template, tool) {
       
     } else {
       //添加功能
-      var html = template("teacher_add_tp1", {
+      var html = template("teacher_add_tp1",{
         title: "讲师添加",
         btnText: "添 加",
         type: "add"
@@ -42,7 +42,6 @@ define(["jquery", "template", "tool"], function ($, template, tool) {
     }
     
     $(".teacher").on("click", ".btn_add", function () {
-      console.log("hehe");
       var url = "";
       if (tc_id) {
         url = "/api/teacher/update";
@@ -52,10 +51,11 @@ define(["jquery", "template", "tool"], function ($, template, tool) {
       $.ajax({
         type: "post",
         url: url,
-        data: $("form").serialize(),
+        data:$("form").serialize(),
         success: function (info) {
+          console.log(info);
           if (info.code == 200) {
-            location.href = "/teacher/list";
+            location.href ="/teacher/list";
           }
         }
       });
